@@ -1,0 +1,33 @@
+﻿@model PersonViewModel
+
+@{
+}
+
+<div class="container">
+    <div>
+        <h2>@Model.person.Firstname @Model.surnameString</h2>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3 font-weight-bold">Gender:</div>
+                <div class="col-sm-8 offset-sm-1">@Model.person.Gender.GenderName</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 font-weight-bold">Email Address:</div>
+                <div class="col-sm-8 offset-sm-1">@Model.person.EmailAddress</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 font-weight-bold">Phone Number:</div>
+                <div class="col-sm-8 offset-sm-1">@Model.person.PhoneNumber</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 font-weight-bold">Date of Birth:</div>
+                <div class="col-sm-8 offset-sm-1">@Model.person.DateOfBirth.ToShortDateString()</div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a class="btn btn-primary" asp-controller="Person" asp-action="Edit" asp-route-id="@Model.person.PersonId">Edit</a>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PersonViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Firstname</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model)
+            {
+                <tr>
+                    <td>@row.person.Firstname</td>
+                    <td>@row.surnameString</td>
+                    <td>@row.person.EmailAddress</td>
+                    <td>
+                        <a class="btn btn-primary" asp-controller="Person" asp-action="Details" asp-route-Id="@row.person.PersonId">More Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-controller="Person" asp-action="Create">Add New Person</a>
+</div>

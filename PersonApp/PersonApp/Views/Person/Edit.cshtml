@@ -1,0 +1,52 @@
+﻿@model PersonViewModel
+
+@{
+}
+
+<h1 class="display-4">Edit Details</h1>
+<div>
+    <form asp-action="Edit" asp-controller="Person" method="post" asp-route-id="@Model.person.PersonId">
+        <input asp-for="person.PersonId" type="hidden"/>
+        <div class="form-group">
+            <label>
+                Firstname
+            </label>
+            <input class="form-control" asp-for="person.Firstname" required />
+        </div>
+        <div class="form-group">
+            <label>
+                Surname
+            </label>
+            <input class="form-control" asp-for="surnameString" required />
+        </div>
+        <div class="form-group">
+            <label>
+                Gender
+            </label>
+            @*<input class="form-control" asp-for="person.Gender" required />*@
+            <select asp-for="person.Gender.Id" class="form-control" 
+                    asp-items="@(new SelectList(ViewBag.GenderList, "Id", "GenderName", 3))">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>
+                EmailAddress
+            </label>
+            <input class="form-control" type="email" asp-for="person.EmailAddress" required />
+        </div>
+        <div class="form-group">
+            <label>
+                PhoneNumber
+            </label>
+            <input class="form-control" asp-for="person.PhoneNumber" />
+        </div>
+        <div class="form-group">
+            <label>
+                DateOfBirth
+            </label>
+            <input class="form-control" asp-for="person.DateOfBirth" required/>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Save" />
+        <a class="btn btn-secondary" asp-controller="Home" asp-action="Index" >Cancel</a>
+    </form>
+</div>

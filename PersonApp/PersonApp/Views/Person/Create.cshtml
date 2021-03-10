@@ -1,0 +1,51 @@
+﻿@model PersonViewModel
+
+@{
+}
+
+<h1 class="display-4">Create New Person</h1>
+<div>
+    <form asp-action="Create" asp-controller="Person" method="post">
+        <div class="form-group">
+            <label>
+                Firstname
+            </label>
+            <input class="form-control" asp-for="person.Firstname" required />
+        </div>
+        <div class="form-group">
+            <label>
+                Surname
+            </label>
+            <input class="form-control" asp-for="surnameString" required />
+        </div>
+        <div class="form-group">
+            <label>
+                Gender
+            </label>
+            @*<input class="form-control" asp-for="person.Gender" required />*@
+            <select asp-for="person.Gender.Id" class="form-control" 
+                    asp-items="@(new SelectList(ViewBag.GenderList, "Id", "GenderName", 3))">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>
+                EmailAddress
+            </label>
+            <input class="form-control" type="email" asp-for="person.EmailAddress" required />
+        </div>
+        <div class="form-group">
+            <label>
+                PhoneNumber
+            </label>
+            <input class="form-control" asp-for="person.PhoneNumber" />
+        </div>
+        <div class="form-group">
+            <label>
+                DateOfBirth
+            </label>
+            <input class="form-control" asp-for="person.DateOfBirth" required/>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Submit" />
+        <a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
+    </form>
+</div>
